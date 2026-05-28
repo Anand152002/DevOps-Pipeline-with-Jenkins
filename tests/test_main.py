@@ -5,7 +5,15 @@ client = TestClient(app)
 
 
 def test_home():
-
     response = client.get("/")
-
     assert response.status_code == 200
+
+
+def test_docs_page():
+    response = client.get("/docs")
+    assert response.status_code == 200
+
+
+def test_invalid_route():
+    response = client.get("/invalid")
+    assert response.status_code == 404
